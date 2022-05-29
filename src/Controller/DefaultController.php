@@ -14,23 +14,39 @@ class DefaultController extends AbstractController
      */
     public function liste_article(): Response {
         // generateUrl : method from AbstractController class
-        // $url1 = $this->generateUrl(route:'article', parameters: ['id' => 1]);
-        // $url2 = $this->generateUrl(route:'article', parameters: ['id' => 2]);
-        // $url3 = $this->generateUrl(route:'article', parameters: ['id' => 3]);
+        $url1 = $this->generateUrl(route:'article', parameters: ['id' => 1]);
+        $url2 = $this->generateUrl(route:'article', parameters: ['id' => 2]);
+        $url3 = $this->generateUrl(route:'article', parameters: ['id' => 3]);
         // return new Response(content:
         //     "<ul>
         //         <li><a href='".$url1."'>Article 1</a></li>
         //        <li><a href='".$url2."'>Article 2</a></li>
         //        <li><a href='".$url3."'>Article 3</a></li>
         //    </ul>");
+        $articles = [
+            [
+                'nom' => 'Article 1',
+                'url' => $url1
+            ],
+            [
+                'nom' => 'Article 2',
+                'url' => $url2
+            ],
+            [
+                'nom' => 'Article 3',
+                'url' => $url3
+            ]
+        ];
         $twig_view = $this->render('default/index.html.twig',
         [
             # "controller_name" => "[{src: 'imgSrc', name: 'Name'}, {src: 'imgSrc', name: 'Name'}]"
             'url1' => $this->generateUrl(route:'article', parameters: ['id' => 1]),
             'url2' => $this->generateUrl(route:'article', parameters: ['id' => 2]),
             'url3' => $this->generateUrl(route:'article', parameters: ['id' => 3]),
+            'articles' => $articles
 
         ]);
+
         return $twig_view;
     }
 

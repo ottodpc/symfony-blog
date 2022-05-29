@@ -1,7 +1,10 @@
 {% extends 'base.html.twig' %}
 
+
 {% block title %}
-    Article n• {{ id }}
+    {% if id is defined %}
+        Article n• {{ id }}
+    {% endif %}
 {% endblock %}
 {% block body %}
     <p>Content de l'article {{ id }} </p>

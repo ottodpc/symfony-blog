@@ -12,9 +12,9 @@
     {# double accolade {{ var from ctrl }} #}
     {# <h1>Hello {{ controller_name }}! ✅</h1> #}
     <ul>
-        <li><a href='{{ url1 }}'>Article 1</a></li>
-        <li><a href="{{ url2 }}">Article 2</a></li>
-        <li><a href="{{ url3 }}">Article 3</a></li>
+        {% for a in articles %}
+            <li><a href='{{ a['url']  }}'>Nom: {{ a['nom'] }}</a></li>
+        {%  endfor %}
     </ul>
 </div>
 {% endblock %}
