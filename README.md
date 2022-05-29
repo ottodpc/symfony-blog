@@ -22,3 +22,6 @@ $ symfony console make:controller
 
 6 - Lister toutes les routes
 $ symfony console debug:router
+
+7 - create function/filter
+$ symfony console make:twig-extension

@@ -14,7 +14,10 @@
     {# <h1>Hello {{ controller_name }}! ✅</h1> #}
     <ul>
         {% for a in articles %}
-            <li><a href='{{ a['url']  }}'>Nom: {{ a['nom'] }}</a></li>
+            <li><a
+                {# href='{{ a['url']  }}' #}
+                href="{{ path('article', { 'id': a['id']}) }}"
+                >Nom: {{ a['nom'] }}</a></li>
         {%  endfor %}
     </ul>
 </div>

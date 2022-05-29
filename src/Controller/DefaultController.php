@@ -26,15 +26,18 @@ class DefaultController extends AbstractController
         $articles = [
             [
                 'nom' => 'Article 1',
-                'url' => $url1
+                'url' => $url1,
+                'id' => 1,
             ],
             [
                 'nom' => 'Article 2',
-                'url' => $url2
+                'url' => $url2,
+                'id' => 2,
             ],
             [
                 'nom' => 'Article 3',
-                'url' => $url3
+                'url' => $url3,
+                'id' => 3,
             ]
         ];
         $twig_view = $this->render('default/index.html.twig',
