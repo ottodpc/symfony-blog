@@ -9,12 +9,12 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
+    {# double accolade {{ var from ctrl }} #}
+    {# <h1>Hello {{ controller_name }}! ✅</h1> #}
     <ul>
-        <li>Your controller at <code><a href="{{ '/Users/cyprienotto/Desktop/teacheable/Symfony/blogsymfony/src/Controller/DefaultController.php'|file_link(0) }}">src/Controller/DefaultController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/cyprienotto/Desktop/teacheable/Symfony/blogsymfony/templates/default/index.html.twig'|file_link(0) }}">templates/default/index.html.twig</a></code></li>
+        <li><a href='{{ url1 }}'>Article 1</a></li>
+        <li><a href="{{ url2 }}">Article 2</a></li>
+        <li><a href="{{ url3 }}">Article 3</a></li>
     </ul>
 </div>
 {% endblock %}

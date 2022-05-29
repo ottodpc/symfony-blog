@@ -19,3 +19,6 @@ CMD:
 
 5 - Create a controller, conviention always "Controller" sufix
 $ symfony console make:controller
+
+6 - Lister toutes les routes
+$ symfony console debug:router
