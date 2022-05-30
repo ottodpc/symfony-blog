@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Article;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -65,6 +67,21 @@ class DefaultController extends AbstractController
         return $this->render("default/article.html.twig", ["id" => $id]);
     }
 
+    #[Route('/article/add', name: 'add_article', methods: "GET")]
+    public function add_article(EntityManagerInterface $manager): Response
+    {
+        // obj creation
+        $article = new Article();
+        $article ->setTitre("Le titre");
+        $article->setContenu("Le contenu");
+        #  '\' devant un obj native php
+        $article->setCreationDate(new \DateTime());
+        // save in db thx to entity manager by dependence injection
+        $manager->persist($article); // creation in db with an id
+        $manager->flush(); // save in db with an id
+        dd($article);
+        return $article;
+    }
     // route test
     #[Route('/test', name: 'test', methods: "GET")]
     public function liste(): Response
@@ -72,4 +89,5 @@ class DefaultController extends AbstractController
         $res = new Response(content: "test");
         return $res;
     }
+
 }
