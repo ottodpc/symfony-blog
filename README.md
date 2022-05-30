@@ -39,3 +39,14 @@ $ `symfony console debug:router`
 
 7 - create function/filter
 $ `symfony console make:twig-extension`
+
+8 - php admin "http://127.0.0.1/phpmyadmin/"
+
+9 - start mysql `brew services start mysql` & `brew services list` ( manuel: `brew services mysql --help` )
+
+10 - mysql connect `mysql -uroot -proot`
+- `SHOW DATABASES`;
+
+11 - create db `symfony console doctrine:database:create`
+
+12- create entity `symfony console make:entity`
