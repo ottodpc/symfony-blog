@@ -78,8 +78,7 @@ class DefaultController extends AbstractController
         $article->setCreationDate(new \DateTime());
         // save in db thx to entity manager by dependence injection
         $manager->persist($article); // creation in db with an id
-        $manager->flush(); // save in db with an id
-        dd($article);
+        $manager->flush(); // save in db
         return $article;
     }
     // route test
