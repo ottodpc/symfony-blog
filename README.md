@@ -50,3 +50,5 @@ $ `symfony console make:twig-extension`
 11 - create db `symfony console doctrine:database:create`
 
 12- create entity `symfony console make:entity`
+
+13 - Creation of migration `symfony console make:migration` & migration `symfony console doctrine:migrations:migrate`
