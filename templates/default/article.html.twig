@@ -6,6 +6,14 @@
 {% endblock %}
 {% block body %}
     <p>{{ addition( article.id, 2) }}</p>
-    {# <smal>{{ article.creation_date|date('d/m/Y') }}</smal> #}
+    {# <smal>{{ creationDate|date("d/m/Y") }}</smal> #}
     <p>{{ article.contenu }} </p>
+    <smal>Comments:</smal>
+    {% if article.comments is defined %}
+        <ul>
+            {% for comment in article.comments %}
+                <li>{{ comment.contenu }}. le {{ comment.dateComment|date("d/m/Y") }}</li><br/>
+            {% endfor %}
+        </ul>
+    {% endif %}
 {% endblock %}

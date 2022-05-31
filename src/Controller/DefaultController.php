@@ -49,12 +49,12 @@ class DefaultController extends AbstractController
     /**
      * @Route("/{id}", name="article", requirements={"id"="\d+"}, methods={"GET"})
      */
-    public function get_article(Article $article): Response{
-    //public function get_article(ArticleRepository $articleRepository, $id): Response{
+    // public function get_article(Article $article): Response{
+    public function get_article(ArticleRepository $articleRepository, $id): Response{
 
-        //$article = $articleRepository->find($id);
-        // $article = $articleRepository->findByCreationDate(new \DateTime(2022-05-30));
-         dd($article);
+        $article = $articleRepository->find($id);
+        // $article = $articleRepository->findByCreationDate(new \DateTime(2022-05-30)); // marche pas
+        // dd($article);
         // return new Response(content: "<h1>Article ".$id."<p>Contenu de l'article ".$id."</p>");
         return $this->render("default/article.html.twig", ["article" => $article]);
     }

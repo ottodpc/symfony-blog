@@ -18,12 +18,17 @@ class ArticleFixtures extends Fixture
             $article->setContenu("Le contenu");
             #  '\' devant un obj native php
             $date = new \DateTime();
-            $date->modify("-".$i.' days');
+            $date->modify("-".$i.'days');
             $article->setCreationDate($date);
+
+            // ref to be used any where
+            $this->addReference("article-".$i, $article);
+
             // save in db thx to entity manager by dependence injection
             $manager->persist($article); // creation in db with an id
 
             $manager->flush(); // save in db
         }
     }
+
 }

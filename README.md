@@ -52,5 +52,6 @@ $ `symfony console make:twig-extension`
 12- create entity `symfony console make:entity`
 
 13 - Creation of migration `symfony console make:migration` & migration `symfony console doctrine:migrations:migrate`
-14 - generate dump data: 1 `symfony composer require orm-fixtures --dev`; 2 `symfony console make:fixtures`; 3 `symfony console doctrine:fixtures:load`
-15 - request thx to repos
+14 - generate dump data: 1 `symfony composer require orm-fixtures --dev`; 2 `symfony console make:fixtures` ( convention: fixtures name suffix end with "Fixtures" ; 3 put in db `symfony console doctrine:fixtures:load`
+15 - request db thx to repos
+16 - Collection/Table relation ManyToOne/OneToMany 1 `symfony console make:entity` 2 `symfony console make:migration` 3 `symfony console doctrine:migrations:list` 4 `symfony console doctrine:migrations:migrate`
