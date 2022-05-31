@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,10 +15,10 @@ class DefaultController extends AbstractController
     /**
      * @Route("/", name="liste_articles", methods={"GET"})
      */
-    public function liste_article(): Response {
-        // generateUrl : method from AbstractController class
-        $url1 = $this->generateUrl(route:'article', parameters: ['id' => 1]);
-        $url2 = $this->generateUrl(route:'article', parameters: ['id' => 2]);
+    public function liste_article(ArticleRepository $articleRepository): Response {
+        /** generateUrl : method from AbstractController class
+        // $url1 = $this->generateUrl(route:'article', parameters: ['id' => 1]);
+        // $url2 = $this->generateUrl(route:'article', parameters: ['id' => 2]);
         $url3 = $this->generateUrl(route:'article', parameters: ['id' => 3]);
         // return new Response(content:
         //     "<ul>
@@ -25,23 +26,10 @@ class DefaultController extends AbstractController
         //        <li><a href='".$url2."'>Article 2</a></li>
         //        <li><a href='".$url3."'>Article 3</a></li>
         //    </ul>");
-        $articles = [
-            [
-                'nom' => 'Article 1',
-                'url' => $url1,
-                'id' => 1,
-            ],
-            [
-                'nom' => 'Article 2',
-                'url' => $url2,
-                'id' => 2,
-            ],
-            [
-                'nom' => 'Article 3',
-                'url' => $url3,
-                'id' => 3,
-            ]
-        ];
+        */
+        $articles = $articleRepository->findAll();
+        // dd($article);
+        // return new Response(content: "<h1>Article ".$id."<p>Contenu de l'article ".$id."</p>");
         $twig_view = $this->render('default/index.html.twig',
         [
             # "controller_name" => "[{src: 'imgSrc', name: 'Name'}, {src: 'imgSrc', name: 'Name'}]"
@@ -61,10 +49,14 @@ class DefaultController extends AbstractController
     /**
      * @Route("/{id}", name="article", requirements={"id"="\d+"}, methods={"GET"})
      */
-    public function get_article($id): Response{
-        // dd($id);
+    public function get_article(Article $article): Response{
+    //public function get_article(ArticleRepository $articleRepository, $id): Response{
+
+        //$article = $articleRepository->find($id);
+        // $article = $articleRepository->findByCreationDate(new \DateTime(2022-05-30));
+         dd($article);
         // return new Response(content: "<h1>Article ".$id."<p>Contenu de l'article ".$id."</p>");
-        return $this->render("default/article.html.twig", ["id" => $id]);
+        return $this->render("default/article.html.twig", ["article" => $article]);
     }
 
     #[Route('/article/add', name: 'add_article', methods: "GET")]

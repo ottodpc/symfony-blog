@@ -16,8 +16,8 @@
         {% for a in articles %}
             <li><a
                 {# href='{{ a['url']  }}' #}
-                href="{{ path('article', { 'id': a['id']}) }}"
-                >Nom: {{ a['nom'] }}</a></li>
+                href="{{ path('article', { 'id': a.id }) }}"
+                >{{ a.titre }} {{ a.id }}</a></li>
         {%  endfor %}
     </ul>
 </div>

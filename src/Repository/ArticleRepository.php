@@ -39,6 +39,17 @@ class ArticleRepository extends ServiceEntityRepository
         }
     }
 
+    public function findByCreationDate(\DateTime $date): array
+    {
+        $queryBuilder = $this->createQueryBuilder('a')
+            ->select("a")
+            ->where("a.creation_date = :date") // creation de params :date
+            ->setParameter("date", $date->format("Y-m-d")) // donner une valeur au param ( date pareil en db )
+            ->getQuery()->getResult(); // // transform le qb en query sql & le resultat
+
+        return $queryBuilder;
+    }
+
 //    /**
 //     * @return Article[] Returns an array of Article objects
 //     */

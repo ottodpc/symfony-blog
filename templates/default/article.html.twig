@@ -2,11 +2,10 @@
 
 
 {% block title %}
-    {% if id is defined %}
-        Article n• {{ id }}
-    {% endif %}
+    {{ article.titre }}
 {% endblock %}
 {% block body %}
-    <p>{{ addition(id, 2) }}</p>
-    <p>Content de l'article {{ id }} </p>
+    <p>{{ addition( article.id, 2) }}</p>
+    {# <smal>{{ article.creation_date|date('d/m/Y') }}</smal> #}
+    <p>{{ article.contenu }} </p>
 {% endblock %}
