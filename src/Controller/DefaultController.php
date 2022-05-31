@@ -3,9 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Form\AddArticleFormType;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -59,19 +64,19 @@ class DefaultController extends AbstractController
         return $this->render("default/article.html.twig", ["article" => $article]);
     }
 
-    #[Route('/article/add', name: 'add_article', methods: "GET")]
-    public function add_article(EntityManagerInterface $manager): Response
+    #[Route('/article/add', name: 'add_article' )]
+    public function add_article(Request $request, AddArticleFormType $formBuild): Response
     {
-        // obj creation
-        $article = new Article();
-        $article ->setTitre("Le titre");
-        $article->setContenu("Le contenu");
-        #  '\' devant un obj native php
-        $article->setCreationDate(new \DateTime());
-        // save in db thx to entity manager by dependence injection
-        $manager->persist($article); // creation in db with an id
-        $manager->flush(); // save in db
-        return $article;
+        $formBuild->buildForm();
+        $form = $this->createFormBuilder()
+            ->add("titre", TextType::class)
+            ->add("contenu", TextareaType::class)
+            ->add("creation_date", DateType::class, [
+                "widget" => "single_text",
+                "input" => "datetime"
+            ])
+            ->getForm();
+        return $this->render("default/add_article.html.twig", [ "form" => $formBuild]);
     }
     // route test
     #[Route('/test', name: 'test', methods: "GET")]
