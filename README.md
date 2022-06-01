@@ -57,3 +57,4 @@ $ `symfony console make:twig-extension`
 16 - Collection/Table relation ManyToOne/OneToMany 1 `symfony console make:entity` 2 `symfony console make:migration` 3 `symfony console doctrine:migrations:list` 4 `symfony console doctrine:migrations:migrate`
 17 - create form `symfony console make:form`
 18 - Services ~ = utils list. Php class with functions and this class could be use by dependencies injection. Create custom in src/Service/ServiceNameFile.php
+19 - create user table 1 `symfony console make:user` 2 `symfony console make:migration` 3 migration `symfony console doctrine:migrations:migrate` 4 fixtures etc `symfony console security:encode-password` / `symfony console security:encode-password` 5 `symfony console doctrine:fixtures:load` 6 `symfony console make:auth`
