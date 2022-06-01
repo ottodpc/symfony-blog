@@ -15,6 +15,12 @@ class Article
     #[ORM\Column(type: 'integer')]
     private $id;
 
+    /**
+     * @Assert\Length(
+     *     min=6,
+     *     max=7
+     * )
+     */
     #[ORM\Column(type: 'string', length: 255)]
     private $titre;
 
@@ -132,5 +138,11 @@ class Article
         }
 
         return $this;
+    }
+
+    // use name to pupolate in string, utiliser par ex dans une liste déroulante actuellement dans formulaire ( ERROR: Object of class App\Entity\Article could not be converted to string )
+    public function __toString()
+    {
+        return $this->titre;
     }
 }

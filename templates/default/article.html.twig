@@ -16,4 +16,14 @@
             {% endfor %}
         </ul>
     {% endif %}
+    {{ form_start(form, {"attr": "class":"was-validated"}) }}
+        {{ form_label(form.contenu, "Votre commentaire", {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.contenu, {'label_attr': {'class': 'form-control'}}) }}
+    {# le message d'erreur ne s'affiche pas pourquoi ? #}
+        {{ form_errors(form.contenu) }}
+        {{ form_label(form.author, "Votre nom", {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.author, {'label_attr': {'class': 'form-control'}}) }}
+        {{ form_rest(form) }}
+        <button type="submit">Envoyer</button>
+    {{ form_end(form) }}
 {% endblock %}

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CommentRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
 class Comment
@@ -13,6 +14,14 @@ class Comment
     #[ORM\Column(type: 'integer')]
     private $id;
 
+    /**
+     * @Assert\Length(
+     *     min=6,
+     *     max=7,
+     *     minMessage="Le commentaire doit contenir {{ limit }} caractère minimu",
+     *     maxMessage="Le commentaire doit contenir {{ limit }} caractère minimu",
+     * )
+     */
     #[ORM\Column(type: 'string', length: 255)]
     private $contenu;
 
@@ -25,6 +34,11 @@ class Comment
 
     #[ORM\Column(type: 'string', length: 255)]
     private $author;
+
+    public function __construct()
+    {
+        $this->dateComment = new \DateTime();
+    }
 
     public function getId(): ?int
     {

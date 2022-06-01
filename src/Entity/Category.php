@@ -66,4 +66,9 @@ class Category
 
         return $this;
     }
+    // use name to pupolate in string
+    public function __toString()
+    {
+        return $this->name;
+    }
 }

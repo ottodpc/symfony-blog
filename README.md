@@ -1,5 +1,5 @@
 <h3  align="center">
-Symfony Blog
+Symfony Blog - simple project to learn symfony
 </h3>
 
 <p align="center">
@@ -55,3 +55,5 @@ $ `symfony console make:twig-extension`
 14 - generate dump data: 1 `symfony composer require orm-fixtures --dev`; 2 `symfony console make:fixtures` ( convention: fixtures name suffix end with "Fixtures" ; 3 put in db `symfony console doctrine:fixtures:load`
 15 - request db thx to repos
 16 - Collection/Table relation ManyToOne/OneToMany 1 `symfony console make:entity` 2 `symfony console make:migration` 3 `symfony console doctrine:migrations:list` 4 `symfony console doctrine:migrations:migrate`
+17 - create form `symfony console make:form`
+18 - Services ~ = utils list. Php class with functions and this class could be use by dependencies injection. Create custom in src/Service/ServiceNameFile.php
